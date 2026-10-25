@@ -1,0 +1,16 @@
+{
+  "usuario_github": "gust4vorss",
+  "repositorio_hub": "portfoliohub",
+  "destaque": {
+    "nome": "Futebol por Região",
+    "repositorio": "bootcamp2-appTimes",
+    "descricao": "Aplicação web que mostra o estado e a região de clubes brasileiros usando a API de Localidades do IBGE, com favoritos salvos no Supabase (PostgreSQL).",
+    "tecnologias": ["HTML", "CSS", "JavaScript", "API IBGE", "Supabase", "Docker", "GitHub Pages"],
+    "links": {
+      "site": "https://gust4vorss.github.io/bootcamp2-appTimes/",
+      "codigo": "https://github.com/gust4vorss/bootcamp2-appTimes",
+      "docker": "https://hub.docker.com/r/gust4vorss/bootcamp2-app"
+    }
+  },
+  "ocultar": ["gust4vorss"]
+}

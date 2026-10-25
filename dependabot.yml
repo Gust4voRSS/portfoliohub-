@@ -1,0 +1,7 @@
+# Dependabot: verifica toda semana se as automações (GitHub Actions) têm versão nova/segura
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

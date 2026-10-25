@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEGURANÇA: Content Security Policy.
+       Diz ao navegador de onde a página PODE carregar coisas.
+       Qualquer script ou conexão fora desta lista é bloqueado. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self';
+                 style-src 'self';
+                 img-src 'self' https://avatars.githubusercontent.com data:;
+                 connect-src 'self' https://api.github.com;
+                 base-uri 'self';
+                 form-action 'none'">
+  <!-- SEGURANÇA: não envia o endereço completo da página para outros sites -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <title>PortfolioHUB · Gustavo Spindola</title>
+  <meta name="description" content="Portfólio de projetos de Gustavo Rodrigues Sousa Spindola, integrado ao GitHub.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <div class="topo-inner">
+      <img id="avatar" class="avatar" src="data:," alt="Foto de perfil no GitHub" width="88" height="88" hidden>
+      <div>
+        <p class="rotulo">PortfolioHUB</p>
+        <h1>Gustavo Rodrigues Sousa Spindola</h1>
+        <p class="bio" id="bio">Estudante de tecnologia. Aqui ficam meus projetos, puxados direto do meu GitHub.</p>
+        <nav class="links-topo">
+          <a id="link-github" href="https://github.com/gust4vorss" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#sobre-hub">Como funciona</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- Projeto em destaque (vem do arquivo projetos.json, guardado no próprio GitHub) -->
+    <section aria-labelledby="titulo-destaque">
+      <h2 id="titulo-destaque">Projeto em destaque</h2>
+      <div id="destaque" class="destaque">
+        <p class="carregando">Carregando destaque...</p>
+      </div>
+    </section>
+
+    <!-- Lista de repositórios (vem ao vivo da API do GitHub) -->
+    <section id="projetos" aria-labelledby="titulo-projetos">
+      <div class="cabecalho-secao">
+        <h2 id="titulo-projetos">Todos os projetos <span id="total" class="contador">0</span></h2>
+        <p class="origem" id="origem-dados"></p>
+      </div>
+
+      <div class="filtros">
+        <label class="campo">
+          <span>Buscar</span>
+          <input id="busca" type="search" placeholder="Nome ou descrição" autocomplete="off">
+        </label>
+        <label class="campo">
+          <span>Linguagem</span>
+          <select id="linguagem">
+            <option value="">Todas</option>
+          </select>
+        </label>
+        <label class="campo">
+          <span>Ordenar por</span>
+          <select id="ordem">
+            <option value="atualizado">Atualizado recentemente</option>
+            <option value="nome">Nome (A–Z)</option>
+            <option value="estrelas">Mais estrelas</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="lista" class="grade" aria-live="polite">
+        <p class="carregando">Buscando projetos no GitHub...</p>
+      </div>
+    </section>
+
+    <!-- Transparência: de onde vem cada coisa e qual a última versão publicada -->
+    <section id="sobre-hub" class="sobre" aria-labelledby="titulo-sobre">
+      <h2 id="titulo-sobre">Como este portfólio funciona</h2>
+      <ul class="passos">
+        <li><strong>Projetos:</strong> a lista é lida da API pública do GitHub. Criou um repositório novo? Ele aparece aqui sozinho.</li>
+        <li><strong>Destaque:</strong> vem do arquivo <code>projetos.json</code>, que fica guardado no repositório e tem histórico de versões.</li>
+        <li><strong>Publicação:</strong> o site é hospedado no GitHub Pages. Toda mudança passa por um Pull Request antes de entrar na branch <code>main</code>.</li>
+        <li><strong>Segurança:</strong> nenhuma senha ou chave fica no código; a página só aceita conexões com o próprio site e com a API do GitHub.</li>
+      </ul>
+      <p class="versao" id="versao">Verificando a última versão publicada...</p>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    PortfolioHUB · Código aberto em
+    <a id="link-repo" href="https://github.com/gust4vorss/portfoliohub" target="_blank" rel="noopener noreferrer">github.com/gust4vorss/portfoliohub</a>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

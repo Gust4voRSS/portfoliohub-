@@ -1,0 +1,33 @@
+# Roda sozinho em todo Pull Request e em todo envio para a main.
+# Se alguma verificação falhar, o PR não pode ser aceito (configurado no ruleset).
+name: Verificação
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Segurança: a automação só pode LER o repositório
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Conferir se o projetos.json está bem escrito
+        run: python3 -m json.tool projetos.json > /dev/null
+
+      - name: Validar o HTML (só avisa, não bloqueia)
+        continue-on-error: true
+        run: npx --yes html-validate@8 index.html
+
+      - name: Procurar senhas ou chaves esquecidas no código
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
