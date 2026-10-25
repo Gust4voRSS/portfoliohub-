@@ -44,3 +44,5 @@ Veja o [SECURITY.md](SECURITY.md).
 
 ## Licença
 MIT — veja [LICENSE](LICENSE).
+## Status
+Versão 1.0 publicada em 25/10/2026.
